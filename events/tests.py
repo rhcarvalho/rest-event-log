@@ -115,7 +115,7 @@ class EventAPITest(APITestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_event_create(self):
-        url = reverse('events/')
+        url = reverse('events')
         data = {'title': 'real #test @event'}
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)

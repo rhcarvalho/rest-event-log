@@ -3,7 +3,7 @@ from events import views
 
 
 urlpatterns = [
-    url(r'^events/$', views.EventList.as_view()),
+    url(r'^events/$', views.EventList.as_view(), name="events"),
     url(r'^events/(?P<pk>[0-9]+)/$', views.EventDetail.as_view()),
     url(r'^events/category/(?P<category>\D+)/$',
         views.EventCategoryList.as_view()),
