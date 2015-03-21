@@ -117,6 +117,14 @@ class EventAPITest(APITestCase):
     def test_event_create(self):
         url = reverse('events')
         data = {'title': 'real #test @event'}
+        expected_data = {
+            'id': 1,
+            'title': 'real #test @event',
+            'person': 'event',
+            'category': 'test',
+            'time': 'DOES NOT MATTER',
+        }
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(response.data, data)
+        expected_data['time'] = response.data['time']
+        self.assertEqual(response.data, expected_data)
